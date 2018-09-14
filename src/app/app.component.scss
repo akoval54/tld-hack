@@ -1,0 +1,16 @@
+.b-app {
+  flex-direction: column;
+  height: 100vh;
+
+  .b-app__top {
+    height: 35%;
+    justify-content: flex-end;
+  }
+  .b-app__middle {
+    height: 60%;
+    justify-content: flex-start;
+  }
+  .b-app__bottom {
+    height: 5%;
+  }
+}
