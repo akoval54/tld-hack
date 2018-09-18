@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "download-tld-list": "curl https://tld-list.com/df/tld-list-details.json > src/assets/tld-list.json"
+    "download-tld-list": "bash download-tld-list.sh"
   },
   "private": true,
   "dependencies": {
