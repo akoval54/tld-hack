@@ -3,6 +3,9 @@ import {Subject} from 'rxjs';
 import {List, Range} from 'immutable';
 import {TLD_MAX_LENGTH, TLD_MIN_LENGTH} from './tld-length';
 import TLDMap from './tld-map';
+import DomainHack from './domain-hack';
+import TopLevelDomain from './tld';
+import TLDType from './tld-type';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +17,7 @@ export class DomainService {
   setCurrentTerm = (term: string) => this.searchTerms.next(term);
 
   getDomainHacks = (term: string) => {
-    let results: List<string> = List();
+    let results: List<DomainHack> = List();
 
     if (term.length <= TLD_MIN_LENGTH) {
       return results;
@@ -23,10 +26,19 @@ export class DomainService {
     const tldLengthRange = Range(TLD_MIN_LENGTH, Math.min(TLD_MAX_LENGTH, term.length));
 
     tldLengthRange.forEach(tldLength => {
-      const tld = TLDMap.get(term.slice(-tldLength));
+      const termSuffix = term.slice(-tldLength);
+      const tldProps = TLDMap.get(termSuffix);
 
-      if (tld) {
-        results = results.push(`${term.slice(0, -tldLength)}.${term.slice(-tldLength)}`);
+      if (tldProps) {
+        results = results.push(new DomainHack(
+            term.slice(0, -tldLength),
+            new TopLevelDomain(
+              termSuffix,
+              TLDType[<string>tldProps.get('type')],
+              tldProps.get('language_code'),
+              tldProps.get('translation'),
+              tldProps.get('sponsor'))
+        ));
       }
     });
 
