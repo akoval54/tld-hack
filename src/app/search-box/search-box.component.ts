@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+import {DomainService} from 'src/app/domain.service';
 
 @Component({
   selector: 'app-search-box',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBoxComponent implements OnInit {
 
-  constructor() { }
+  constructor(private domainService: DomainService) {
+  }
 
   ngOnInit() {
   }
 
+  setCurrentTerm = (term: string) => this.domainService.setCurrentTerm(term);
 }
