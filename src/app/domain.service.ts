@@ -5,7 +5,6 @@ import {TLD_MAX_LENGTH, TLD_MIN_LENGTH} from './tld-length';
 import TLDMap from './tld-map';
 import DomainHack from './domain-hack';
 import TopLevelDomain from './tld';
-import TLDType from './tld-type';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +33,7 @@ export class DomainService {
             term.slice(0, -tldLength),
             new TopLevelDomain(
               termSuffix,
-              TLDType[<string>tldProps.get('type')],
+              tldProps.get('type'),
               tldProps.get('punycode'),
               tldProps.get('language_code'),
               tldProps.get('translation'),

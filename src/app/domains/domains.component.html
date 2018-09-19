@@ -1,3 +1,3 @@
 <div class="b-search-result__item" *ngFor="let domainHack of domainHacks">
-  {{domainHack.subDomain + '.' + domainHack.tld.name}} | {{domainHack.tld.getCountryName()}}
+  {{domainHack.subDomain + '.' + domainHack.tld.name}} | {{domainHack.tld.getCountryName() || domainHack.tld.sponsor}}
 </div>
