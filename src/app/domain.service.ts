@@ -35,8 +35,11 @@ export class DomainService {
             new TopLevelDomain(
               termSuffix,
               TLDType[<string>tldProps.get('type')],
+              tldProps.get('punycode'),
               tldProps.get('language_code'),
               tldProps.get('translation'),
+              tldProps.get('romanized'),
+              tldProps.get('rtl'),
               tldProps.get('sponsor'))
         ));
       }
