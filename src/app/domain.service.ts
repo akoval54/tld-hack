@@ -14,7 +14,7 @@ export class DomainService {
   private searchTerms = new Subject<string>();
   searchTerm$ = this.searchTerms.asObservable();
 
-  setCurrentTerm = (term: string) => this.searchTerms.next(term);
+  setCurrentTerm = (term: string) => this.searchTerms.next(term.toLowerCase());
 
   getDomainHacks = (term: string) => {
     let results: List<DomainHack> = List();
