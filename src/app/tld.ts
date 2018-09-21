@@ -35,5 +35,7 @@ export default class TopLevelDomain {
     }
   }
 
-  getCountryName = () => this.emojiFlag ? `${this.emojiFlag.emoji} ${this.emojiFlag.name}` : undefined;
+  getTldManager = () => this.emojiFlag
+    ? `${this.sponsor}, ${this.emojiFlag.emoji} ${this.emojiFlag.name}`
+    : this.sponsor
 }

@@ -1,3 +1,14 @@
-.b-search-result__item {
-  margin-top: 10px;
+.b-domain-hacks {
+  min-width: 900px;
+
+  table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+
+    td, th {
+      border: 1px solid #dddddd;
+      padding: 8px;
+    }
+  }
 }

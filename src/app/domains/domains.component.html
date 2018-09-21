@@ -1,3 +1,12 @@
-<div class="b-search-result__item" *ngFor="let domainHack of domainHacks">
-  {{domainHack.subDomain + '.' + domainHack.tld.name}} | {{domainHack.tld.getCountryName() || domainHack.tld.sponsor}}
+<div *ngIf="domainHacks && !domainHacks.isEmpty()" class="b-domain-hacks">
+  <table>
+    <tr>
+      <th>Domain</th>
+      <th>TLD Manager</th>
+    </tr>
+    <tr *ngFor="let domainHack of domainHacks">
+      <td>{{domainHack.subDomain + '.' + domainHack.tld.name}}</td>
+      <td>{{domainHack.tld.getTldManager()}}</td>
+    </tr>
+  </table>
 </div>

@@ -3,11 +3,13 @@
     <h1>Welcome to {{ title }}!</h1>
   </div>
   <div class="b-app__middle">
-    <div class="b-search-box">
-      <app-search-box></app-search-box>
-    </div>
-    <div class="b-search-result">
-      <app-domains></app-domains>
+    <div class="b-search">
+      <div class="b-search__input">
+        <app-search-box></app-search-box>
+      </div>
+      <div class="b-search__result">
+        <app-domains></app-domains>
+      </div>
     </div>
   </div>
   <div class="b-app__bottom">
