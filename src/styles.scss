@@ -1,13 +1,8 @@
-body {
-  margin: 0;
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }
 
 div {
   display: flex;
   flex-direction: inherit;
-  justify-content: center;
-  align-items: center;
+  justify-content: inherit;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }

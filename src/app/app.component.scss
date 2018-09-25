@@ -1,5 +1,6 @@
 .b-app {
   flex-direction: column;
+  align-items: center;
   height: 100vh;
 
   .b-app__top {
@@ -12,10 +13,13 @@
   }
   .b-app__bottom {
     height: 5%;
+    justify-content: center;
   }
 }
 
 .b-search {
+  align-items: center;
+
   .b-search__result {
     margin-top: 40px;
   }

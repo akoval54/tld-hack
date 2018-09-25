@@ -8,8 +8,10 @@ import {DomainService} from 'src/app/domain.service';
   styleUrls: ['./search-box.component.scss']
 })
 export class SearchBoxComponent implements OnInit {
+  value: string;
 
   constructor(private domainService: DomainService) {
+    domainService.searchTerm$.subscribe(term => this.value = term);
   }
 
   ngOnInit() {

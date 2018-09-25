@@ -1,1 +1,6 @@
-<input type="search" #searchBox (keyup)="setCurrentTerm(searchBox.value)" placeholder="e.g., internet"/>
+<mat-form-field appearance="outline">
+  <input matInput type="search" [(ngModel)]="value" (keyup)="setCurrentTerm(value)" placeholder="e.g., internet"/>
+  <button mat-button *ngIf="value" matSuffix mat-icon-button (click)="setCurrentTerm('')">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>

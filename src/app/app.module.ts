@@ -1,22 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule} from '@angular/material';
 
-import { AppComponent } from './app.component';
-import { SearchBoxComponent } from './search-box/search-box.component';
-import { DomainsComponent } from './domains/domains.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AppComponent} from './app.component';
+import {SearchBoxComponent} from './search-box/search-box.component';
+import {DomainsComponent} from './domains/domains.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchBoxComponent,
-    DomainsComponent
-  ],
+  declarations: [AppComponent, SearchBoxComponent, DomainsComponent],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
-  ],
+    FormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatButtonModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
