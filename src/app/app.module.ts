@@ -17,9 +17,10 @@ import {SearchBoxComponent} from './search-box/search-box.component';
 import {DomainsComponent} from './domains/domains.component';
 import {SearchComponent} from './search/search.component';
 import {HeaderComponent} from './header/header.component';
+import {FooterComponent} from './footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, SearchBoxComponent, DomainsComponent, HeaderComponent],
+  declarations: [AppComponent, SearchComponent, SearchBoxComponent, DomainsComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     FormsModule,
