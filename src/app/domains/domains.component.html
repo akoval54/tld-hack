@@ -22,7 +22,13 @@
 
     <ng-container matColumnDef="country">
       <mat-header-cell *matHeaderCellDef>Country</mat-header-cell>
-      <mat-cell *matCellDef="let domainHack">{{domainHack.tld.getCountryOrTypeName()}}</mat-cell>
+      <mat-cell *matCellDef="let domainHack">
+        <a [href]="domainHack.tld.getRegistrarSearchUrl()"
+           target="_blank"
+           [matTooltip]="'Find .' + domainHack.tld.name.toUpperCase() + ' Registrar'">
+          {{domainHack.tld.getCountryOrTypeName()}}
+        </a>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="['domain', 'manager', 'country']"></mat-header-row>

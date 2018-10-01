@@ -56,4 +56,6 @@ export default class TopLevelDomain {
   }
 
   getDelegationRecordUrl = () => `https://www.iana.org/domains/root/db/${this.name}.html`;
+
+  getRegistrarSearchUrl = () => `https://www.google.com/search?q=register+.${this.name}+domain`;
 }
