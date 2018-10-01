@@ -11,7 +11,7 @@ const extraTldToCountryCode = Map({
 });
 
 export default class TopLevelDomain {
-  public emojiFlag: {
+  private emojiFlag: {
     code: string;
     emoji: string;
     name: string;
@@ -32,6 +32,26 @@ export default class TopLevelDomain {
       this.emojiFlag = emojiFlags.countryCode(languageCode);
     } else if (type === TLDType.CountryCode) {
       this.emojiFlag = emojiFlags.countryCode(extraTldToCountryCode.get(name) || name);
+    }
+  }
+
+  getCountryOrTypeName = () => {
+    if (this.emojiFlag) {
+      return `${this.emojiFlag.emoji} ${this.emojiFlag.name}`;
+    }
+
+    // TODO: externalize/translate strings
+    switch (this.type) {
+      case TLDType.Generic:
+        return 'Generic Domain';
+      case TLDType.GenericRestricted:
+        return 'Generic Restricted Domain';
+      case TLDType.Infrastructure:
+        return 'Infrastructure Domain';
+      case TLDType.Sponsored:
+        return 'Sponsored Domain';
+      case TLDType.Test:
+        return 'Test Domain';
     }
   }
 }
