@@ -1,37 +1,37 @@
 <div *ngIf="domainHacks && domainHacks.length" class="b-search-result">
-  <mat-table [dataSource]="domainHacks">
+  <table mat-table [dataSource]="domainHacks">
     <ng-container matColumnDef="domain">
-      <mat-header-cell *matHeaderCellDef>Domain</mat-header-cell>
-      <mat-cell *matCellDef="let domainHack">
+      <th mat-header-cell *matHeaderCellDef>Domain</th>
+      <td mat-cell *matCellDef="let domainHack">
         <a [href]="domainHack.getUrl()" target="_blank" matTooltip="Try visit">
           {{domainHack.getName()}}
         </a>
-      </mat-cell>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="manager">
-      <mat-header-cell *matHeaderCellDef>TLD Manager</mat-header-cell>
-      <mat-cell *matCellDef="let domainHack">
+      <th mat-header-cell *matHeaderCellDef>TLD Manager</th>
+      <td mat-cell *matCellDef="let domainHack">
         <a [href]="domainHack.tld.getDelegationRecordUrl()"
            target="_blank"
            [matTooltip]="'Check .' + domainHack.tld.name.toUpperCase() + ' Delegation Record'">
           {{domainHack.tld.sponsor}}
         </a>
-      </mat-cell>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="country">
-      <mat-header-cell *matHeaderCellDef>Country</mat-header-cell>
-      <mat-cell *matCellDef="let domainHack">
+      <th mat-header-cell *matHeaderCellDef>Country</th>
+      <td mat-cell *matCellDef="let domainHack">
         <a [href]="domainHack.tld.getRegistrarSearchUrl()"
            target="_blank"
            [matTooltip]="'Find .' + domainHack.tld.name.toUpperCase() + ' Registrar'">
           {{domainHack.tld.getCountryOrTypeName()}}
         </a>
-      </mat-cell>
+      </td>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="['domain', 'manager', 'country']"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: ['domain', 'manager', 'country']"></mat-row>
-  </mat-table>
+    <tr mat-header-row *matHeaderRowDef="['domain', 'manager', 'country']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['domain', 'manager', 'country']"></tr>
+  </table>
 </div>
