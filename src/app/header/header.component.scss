@@ -1,14 +1,23 @@
-$logo-size: 48px;
+$logo-size: 96px;
+$slogan-width: 450px;
 
 .b-header {
   flex-direction: column;
   align-items: center;
+  color: orange;
 
   .b-header__logo {
     .mat-icon {
       font-size: $logo-size;
       height: $logo-size;
       width: $logo-size;
+    }
+  }
+
+  .b-header__slogan {
+    .b-header-slogan {
+      width: $slogan-width;
+      justify-content: space-evenly;
     }
   }
 }
