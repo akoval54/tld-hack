@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {List, Range} from 'immutable';
+
 import {TLD_MAX_LENGTH, TLD_MIN_LENGTH} from './tld-length';
 import TLDMap from './tld-map';
 import DomainHack from './domain-hack';
@@ -10,12 +11,18 @@ import TopLevelDomain from './tld';
   providedIn: 'root'
 })
 export class DomainService {
-  private searchTerms = new Subject<string>();
-  searchTerm$ = this.searchTerms.asObservable();
+  private searchTerm = new Subject<string>();
+  private domainHacks = new Subject<List<DomainHack>>();
 
-  setCurrentTerm = (term: string) => this.searchTerms.next(term.toLowerCase());
+  searchTerm$ = this.searchTerm.asObservable();
+  domainHacks$ = this.domainHacks.asObservable();
 
-  getDomainHacks = (term: string) => {
+  setCurrentTerm = (term: string) => {
+    this.searchTerm.next(term.toLowerCase());
+    this.domainHacks.next(this.getDomainHacks(term.toLowerCase()));
+  }
+
+  private getDomainHacks = (term: string) => {
     let results: List<DomainHack> = List();
 
     if (term.length <= TLD_MIN_LENGTH) {
@@ -30,16 +37,16 @@ export class DomainService {
 
       if (tldProps) {
         results = results.push(new DomainHack(
-            term.slice(0, -tldLength),
-            new TopLevelDomain(
-              termSuffix,
-              tldProps.get('type'),
-              tldProps.get('punycode'),
-              tldProps.get('language_code'),
-              tldProps.get('translation'),
-              tldProps.get('romanized'),
-              tldProps.get('rtl'),
-              tldProps.get('sponsor'))
+          term.slice(0, -tldLength),
+          new TopLevelDomain(
+            termSuffix,
+            tldProps.get('type'),
+            tldProps.get('punycode'),
+            tldProps.get('language_code'),
+            tldProps.get('translation'),
+            tldProps.get('romanized'),
+            tldProps.get('rtl'),
+            tldProps.get('sponsor'))
         ));
       }
     });

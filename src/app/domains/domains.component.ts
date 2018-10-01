@@ -13,9 +13,9 @@ export class DomainsComponent implements OnInit {
   domainHacks: List<DomainHack>;
 
   constructor(private domainService: DomainService) {
-    domainService.searchTerm$.subscribe(
-      term => {
-        this.domainHacks = this.domainService.getDomainHacks(term);
+    domainService.domainHacks$.subscribe(
+      domainHacks => {
+        this.domainHacks = domainHacks;
       });
   }
 
