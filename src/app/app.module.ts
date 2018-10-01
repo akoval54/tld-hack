@@ -7,9 +7,10 @@ import {MatInputModule, MatFormFieldModule, MatIconModule, MatButtonModule} from
 import {AppComponent} from './app.component';
 import {SearchBoxComponent} from './search-box/search-box.component';
 import {DomainsComponent} from './domains/domains.component';
+import {SearchComponent} from './search/search.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchBoxComponent, DomainsComponent],
+  declarations: [AppComponent, SearchComponent, SearchBoxComponent, DomainsComponent],
   imports: [
     BrowserModule,
     FormsModule,

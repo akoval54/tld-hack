@@ -5,22 +5,12 @@
 
   .b-app__top {
     height: 35%;
-    justify-content: flex-end;
+    align-items: flex-end;
   }
   .b-app__middle {
     height: 60%;
-    justify-content: flex-start;
   }
   .b-app__bottom {
     height: 5%;
-    justify-content: center;
-  }
-}
-
-.b-search {
-  align-items: center;
-
-  .b-search__result {
-    margin-top: 40px;
   }
 }
