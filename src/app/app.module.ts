@@ -8,7 +8,8 @@ import {
   MatIconModule,
   MatButtonModule,
   MatTableModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatTooltipModule
 } from '@angular/material';
 
 import {AppComponent} from './app.component';
@@ -28,7 +29,8 @@ import {HeaderComponent} from './header/header.component';
     MatIconModule,
     MatButtonModule,
     MatTableModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

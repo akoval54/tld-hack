@@ -2,7 +2,11 @@
   <mat-table [dataSource]="domainHacks">
     <ng-container matColumnDef="domain">
       <mat-header-cell *matHeaderCellDef>Domain</mat-header-cell>
-      <mat-cell *matCellDef="let domainHack">{{domainHack.subDomain + '.' + domainHack.tld.name}}</mat-cell>
+      <mat-cell *matCellDef="let domainHack">
+        <a [href]="domainHack.getUrl()" target="_blank" matTooltip="Try visit" matTooltipPosition="right">
+          {{domainHack.getName()}}
+        </a>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="manager">
