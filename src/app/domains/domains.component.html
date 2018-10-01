@@ -7,10 +7,17 @@
 
     <ng-container matColumnDef="manager">
       <mat-header-cell *matHeaderCellDef>TLD Manager</mat-header-cell>
-      <mat-cell *matCellDef="let domainHack">{{domainHack.tld.getTldManager()}}</mat-cell>
+      <mat-cell *matCellDef="let domainHack">{{domainHack.tld.sponsor}}</mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="['domain', 'manager']"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: ['domain', 'manager']"></mat-row>
+    <ng-container matColumnDef="country">
+      <mat-header-cell *matHeaderCellDef>Country</mat-header-cell>
+      <mat-cell *matCellDef="let domainHack">
+        {{domainHack.tld.emojiFlag ? domainHack.tld.emojiFlag.emoji + ' ' + domainHack.tld.emojiFlag.name : ''}}
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['domain', 'manager', 'country']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['domain', 'manager', 'country']"></mat-row>
   </mat-table>
 </div>

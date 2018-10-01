@@ -11,7 +11,7 @@ const extraTldToCountryCode = Map({
 });
 
 export default class TopLevelDomain {
-  private emojiFlag: {
+  public emojiFlag: {
     code: string;
     emoji: string;
     name: string;
@@ -34,8 +34,4 @@ export default class TopLevelDomain {
       this.emojiFlag = emojiFlags.countryCode(extraTldToCountryCode.get(name) || name);
     }
   }
-
-  getTldManager = () => this.emojiFlag
-    ? `${this.sponsor}, ${this.emojiFlag.emoji} ${this.emojiFlag.name}`
-    : this.sponsor
 }

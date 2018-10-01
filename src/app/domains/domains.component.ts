@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {List} from 'immutable';
 
 import {DomainService} from 'src/app/domain.service';
 import DomainHack from 'src/app/domain-hack';
