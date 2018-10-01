@@ -3,7 +3,7 @@
     <ng-container matColumnDef="domain">
       <mat-header-cell *matHeaderCellDef>Domain</mat-header-cell>
       <mat-cell *matCellDef="let domainHack">
-        <a [href]="domainHack.getUrl()" target="_blank" matTooltip="Try visit" matTooltipPosition="right">
+        <a [href]="domainHack.getUrl()" target="_blank" matTooltip="Try visit">
           {{domainHack.getName()}}
         </a>
       </mat-cell>
@@ -11,7 +11,13 @@
 
     <ng-container matColumnDef="manager">
       <mat-header-cell *matHeaderCellDef>TLD Manager</mat-header-cell>
-      <mat-cell *matCellDef="let domainHack">{{domainHack.tld.sponsor}}</mat-cell>
+      <mat-cell *matCellDef="let domainHack">
+        <a [href]="domainHack.tld.getDelegationRecordUrl()"
+           target="_blank"
+           [matTooltip]="'Check .' + domainHack.tld.name.toUpperCase() + ' Delegation Record'">
+          {{domainHack.tld.sponsor}}
+        </a>
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="country">

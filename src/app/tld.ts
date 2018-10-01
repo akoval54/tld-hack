@@ -54,4 +54,6 @@ export default class TopLevelDomain {
         return 'Test Domain';
     }
   }
+
+  getDelegationRecordUrl = () => `https://www.iana.org/domains/root/db/${this.name}.html`;
 }
