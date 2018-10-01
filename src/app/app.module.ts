@@ -8,9 +8,10 @@ import {AppComponent} from './app.component';
 import {SearchBoxComponent} from './search-box/search-box.component';
 import {DomainsComponent} from './domains/domains.component';
 import {SearchComponent} from './search/search.component';
+import {HeaderComponent} from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, SearchBoxComponent, DomainsComponent],
+  declarations: [AppComponent, SearchComponent, SearchBoxComponent, DomainsComponent, HeaderComponent],
   imports: [
     BrowserModule,
     FormsModule,
