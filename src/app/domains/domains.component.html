@@ -1,12 +1,16 @@
-<div *ngIf="domainHacks && !domainHacks.isEmpty()" class="b-search-result">
-  <table>
-    <tr>
-      <th>Domain</th>
-      <th>TLD Manager</th>
-    </tr>
-    <tr *ngFor="let domainHack of domainHacks">
-      <td>{{domainHack.subDomain + '.' + domainHack.tld.name}}</td>
-      <td>{{domainHack.tld.getTldManager()}}</td>
-    </tr>
-  </table>
+<div *ngIf="domainHacks && domainHacks.length" class="b-search-result">
+  <mat-table [dataSource]="domainHacks">
+    <ng-container matColumnDef="domain">
+      <mat-header-cell *matHeaderCellDef>Domain</mat-header-cell>
+      <mat-cell *matCellDef="let domainHack">{{domainHack.subDomain + '.' + domainHack.tld.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="manager">
+      <mat-header-cell *matHeaderCellDef>TLD Manager</mat-header-cell>
+      <mat-cell *matCellDef="let domainHack">{{domainHack.tld.getTldManager()}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['domain', 'manager']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['domain', 'manager']"></mat-row>
+  </mat-table>
 </div>

@@ -10,12 +10,12 @@ import DomainHack from 'src/app/domain-hack';
   styleUrls: ['./domains.component.scss']
 })
 export class DomainsComponent implements OnInit {
-  domainHacks: List<DomainHack>;
+  domainHacks: DomainHack[];
 
   constructor(private domainService: DomainService) {
     domainService.domainHacks$.subscribe(
       domainHacks => {
-        this.domainHacks = domainHacks;
+        this.domainHacks = domainHacks.toJS();
       });
   }
 
