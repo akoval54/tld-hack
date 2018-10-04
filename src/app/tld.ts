@@ -44,6 +44,8 @@ export default class TopLevelDomain {
     switch (this.type) {
       case TLDType.Generic:
         return 'Generic Domain';
+      case TLDType.CountryCode:
+        return 'Country Code Domain';
       case TLDType.GenericRestricted:
         return 'Generic Restricted Domain';
       case TLDType.Infrastructure:
