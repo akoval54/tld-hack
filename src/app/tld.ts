@@ -1,4 +1,5 @@
 import {Map} from 'immutable';
+import ISO_639_1 from 'iso-639-1';
 
 import TLDType from './tld-type';
 import emojiFlags from 'emoji-flags';
@@ -27,10 +28,7 @@ export default class TopLevelDomain {
     public rtl: boolean,
     public sponsor: string) {
 
-    if (punycode) {
-      // TODO: convert languageCode to countryCode
-      this.emojiFlag = emojiFlags.countryCode(languageCode);
-    } else if (type === TLDType.CountryCode) {
+    if (type === TLDType.CountryCode) {
       this.emojiFlag = emojiFlags.countryCode(extraTldToCountryCode.get(name) || name);
     }
   }
@@ -40,6 +38,13 @@ export default class TopLevelDomain {
       return `${this.emojiFlag.emoji} ${this.emojiFlag.name}`;
     }
 
+    const language = this.languageCode ? `${ISO_639_1.getName(this.languageCode.substring(0, 2))} ` : '';
+    const translation = this.translation ? ` (${this.translation})` : '';
+
+    return `${language}${this.getTldTypeName()}${translation}`;
+  }
+
+  getTldTypeName = () => {
     // TODO: externalize/translate strings
     switch (this.type) {
       case TLDType.Generic:
@@ -54,6 +59,8 @@ export default class TopLevelDomain {
         return 'Sponsored Domain';
       case TLDType.Test:
         return 'Test Domain';
+      default:
+        return 'Unknown';
     }
   }
 
