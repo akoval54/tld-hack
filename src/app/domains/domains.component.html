@@ -1,37 +1,49 @@
-<div *ngIf="domainHacks && domainHacks.length" class="b-search-result">
-  <table mat-table [dataSource]="domainHacks">
-    <ng-container matColumnDef="domain">
-      <th mat-header-cell *matHeaderCellDef>Domain</th>
-      <td mat-cell *matCellDef="let domainHack">
-        <a [href]="domainHack.getUrl()" target="_blank" matTooltip="Try visit">
-          {{domainHack.getName()}}
-        </a>
-      </td>
-    </ng-container>
+<table mat-table [dataSource]="domainHacks" *ngIf="domainHacks && domainHacks.length" class="b-domain-hacks">
+  <ng-container matColumnDef="domain">
+    <th mat-header-cell *matHeaderCellDef>Domain</th>
+    <td class="b-domain-hack__item" mat-cell *matCellDef="let domainHack">
+      <a [href]="domainHack.getUrl()"
+         target="_blank"
+         [matTooltip]="'Try visit ' + domainHack.getUrl()"
+         matTooltipClass="tooltip-14"
+      >
+        <div class="b-domain-hack-item">
+          {{domainHack.getName()}}<mat-icon>open_in_new</mat-icon>
+        </div>
+      </a>
+    </td>
+  </ng-container>
 
-    <ng-container matColumnDef="manager">
-      <th mat-header-cell *matHeaderCellDef>TLD Manager</th>
-      <td mat-cell *matCellDef="let domainHack">
-        <a [href]="domainHack.tld.getDelegationRecordUrl()"
-           target="_blank"
-           [matTooltip]="'Check .' + domainHack.tld.name.toUpperCase() + ' Delegation Record'">
-          {{domainHack.tld.sponsor}}
-        </a>
-      </td>
-    </ng-container>
+  <ng-container matColumnDef="manager">
+    <th mat-header-cell *matHeaderCellDef>TLD Manager</th>
+    <td class="b-domain-hack__item" mat-cell *matCellDef="let domainHack">
+      <a [href]="domainHack.tld.getDelegationRecordUrl()"
+         target="_blank"
+         [matTooltip]="'Check IANA .' + domainHack.tld.name.toUpperCase() + ' Delegation Record'"
+         matTooltipClass="tooltip-14"
+      >
+        <div class="b-domain-hack-item">
+          {{domainHack.tld.sponsor}}<mat-icon>open_in_new</mat-icon>
+        </div>
+      </a>
+    </td>
+  </ng-container>
 
-    <ng-container matColumnDef="country">
-      <th mat-header-cell *matHeaderCellDef>Country</th>
-      <td mat-cell *matCellDef="let domainHack">
-        <a [href]="domainHack.tld.getRegistrarSearchUrl()"
-           target="_blank"
-           [matTooltip]="'Find .' + domainHack.tld.name.toUpperCase() + ' Registrar'">
-          {{domainHack.tld.getCountryOrTypeName()}}
-        </a>
-      </td>
-    </ng-container>
+  <ng-container matColumnDef="country">
+    <th mat-header-cell *matHeaderCellDef>Country</th>
+    <td class="b-domain-hack__item" mat-cell *matCellDef="let domainHack">
+      <a [href]="domainHack.tld.getRegistrarSearchUrl()"
+         target="_blank"
+         [matTooltip]="'Find .' + domainHack.tld.name.toUpperCase() + ' Registrar'"
+         matTooltipClass="tooltip-14"
+      >
+        <div class="b-domain-hack-item">
+          {{domainHack.tld.getCountryOrTypeName()}}<mat-icon>open_in_new</mat-icon>
+        </div>
+      </a>
+    </td>
+  </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="['domain', 'manager', 'country']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['domain', 'manager', 'country']"></tr>
-  </table>
-</div>
+  <tr mat-header-row *matHeaderRowDef="['domain', 'manager', 'country']"></tr>
+  <tr class="b-domain-hack" mat-row *matRowDef="let row; columns: ['domain', 'manager', 'country']"></tr>
+</table>

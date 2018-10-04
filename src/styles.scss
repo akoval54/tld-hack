@@ -7,6 +7,11 @@ div {
   display: flex;
 }
 
+a {
+  color: dodgerblue;
+  text-decoration: none;
+}
+
 .red {
   color: tomato;
 }
@@ -17,4 +22,8 @@ div {
 
 .orange {
   color: orange;
+}
+
+.tooltip-14 {
+  font-size: 14px;
 }
