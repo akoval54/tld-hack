@@ -1,5 +1,5 @@
 import {fromJS} from 'immutable';
 
-import TLDList from 'src/assets/tld-list.json';
+import TLDList from 'src/jsons/tld-list.json';
 
 export default fromJS(TLDList);

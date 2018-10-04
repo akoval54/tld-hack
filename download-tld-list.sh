@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl https://tld-list.com/df/tld-list-details.json > src/assets/tld-list.json
+curl https://tld-list.com/df/tld-list-details.json > src/jsons/tld-list.json
 
 cat >src/app/tld-length.ts <<EOL
 export const TLD_MIN_LENGTH = 2;
