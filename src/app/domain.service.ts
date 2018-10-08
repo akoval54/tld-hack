@@ -35,7 +35,7 @@ export class DomainService {
       const termSuffix = term.slice(-tldLength);
       const tldProps = TLDMap.get(termSuffix);
 
-      if (tldProps) {
+      if (tldProps && term[term.length - tldLength - 1] !== '-') {
         results = results.push(new DomainHack(
           term.slice(0, -tldLength),
           new TopLevelDomain(
