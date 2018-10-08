@@ -29,6 +29,8 @@ export class SearchBoxComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.searchBoxControl.markAsTouched();
+
     this.searchBoxControl.valueChanges.subscribe(value => {
       if (this.searchBoxControl.invalid) {
         this.domainService.setCurrentTerm(undefined);
