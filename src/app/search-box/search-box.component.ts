@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {AbstractControl, FormControl} from '@angular/forms';
 
 import {DomainService} from 'src/app/domain.service';
@@ -10,6 +10,9 @@ import IdnCodesSet from 'src/app/idn-codes-set';
   styleUrls: ['./search-box.component.scss']
 })
 export class SearchBoxComponent implements OnInit {
+  @ViewChild('searchBox')
+  searchBox: ElementRef;
+
   searchBoxControl = new FormControl('', (control: AbstractControl) => {
     if (!control.value) {
       return null;
@@ -29,6 +32,7 @@ export class SearchBoxComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.searchBox.nativeElement.focus();
     this.searchBoxControl.markAsTouched();
 
     this.searchBoxControl.valueChanges.subscribe(value => {
