@@ -26,13 +26,17 @@ export class SearchBoxComponent implements OnInit {
   });
 
   constructor(private domainService: DomainService) {
-    domainService.searchTerm$.subscribe(term => this.searchBoxControl.setValue(term));
   }
 
   ngOnInit() {
+    this.searchBoxControl.valueChanges.subscribe(value => {
+      if (this.searchBoxControl.invalid) {
+        this.domainService.setCurrentTerm(undefined);
+      } else {
+        this.domainService.setCurrentTerm(value);
+      }
+    });
   }
-
-  setCurrentTerm = (term: string) => this.domainService.setCurrentTerm(term);
 
   getErrorMessage = () => {
     const badSymbols = Object.keys(this.searchBoxControl.errors)

@@ -11,15 +11,12 @@ import TopLevelDomain from './tld';
   providedIn: 'root'
 })
 export class DomainService {
-  private searchTerm = new Subject<string>();
   private domainHacks = new Subject<List<DomainHack>>();
 
-  searchTerm$ = this.searchTerm.asObservable();
   domainHacks$ = this.domainHacks.asObservable();
 
   setCurrentTerm = (term: string) => {
-    this.searchTerm.next(term.toLowerCase());
-    this.domainHacks.next(this.getDomainHacks(term.toLowerCase()));
+    this.domainHacks.next(this.getDomainHacks((term || '').toLowerCase()));
   }
 
   private getDomainHacks = (term: string) => {

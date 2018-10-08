@@ -4,11 +4,10 @@
       matInput
       [formControl]="searchBoxControl"
       type="search"
-      (keyup)="setCurrentTerm(searchBoxControl.value)"
       placeholder="e.g., internet"
       autocomplete="off"
     />
-    <button mat-button *ngIf="searchBoxControl.value" matSuffix mat-icon-button (click)="setCurrentTerm('')">
+    <button mat-button *ngIf="searchBoxControl.value" matSuffix mat-icon-button (click)="searchBoxControl.reset()">
       <mat-icon>close</mat-icon>
     </button>
     <mat-error *ngIf="searchBoxControl.invalid">{{getErrorMessage()}}</mat-error>
