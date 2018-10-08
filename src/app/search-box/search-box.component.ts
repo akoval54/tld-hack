@@ -15,8 +15,8 @@ export class SearchBoxComponent implements OnInit {
       return null;
     }
 
-    const errors = control.value.split('').reduce((acc, char) => {
-      if (!IdnCodesSet.has(char.charCodeAt())) {
+    const errors = control.value.split('').reduce((acc, char, index) => {
+      if (!IdnCodesSet.has(char.charCodeAt()) || (char === '-' && index === 0)) {
         acc[char] = true;
       }
       return acc;
@@ -40,6 +40,8 @@ export class SearchBoxComponent implements OnInit {
         switch (char) {
           case ' ':
             return '<space>';
+          case '-':
+            return '<leading hyphen>';
           default:
             return char;
         }
