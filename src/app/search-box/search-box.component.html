@@ -8,7 +8,7 @@
       placeholder="e.g., internet"
       autocomplete="off"
     />
-    <button mat-button *ngIf="searchBoxControl.value" matSuffix mat-icon-button (click)="searchBoxControl.reset()">
+    <button mat-button *ngIf="searchBoxControl.value" matSuffix mat-icon-button (click)="searchBoxControl.setValue('')">
       <mat-icon>close</mat-icon>
     </button>
     <mat-error *ngIf="searchBoxControl.invalid">{{getErrorMessage()}}</mat-error>
