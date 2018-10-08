@@ -18,7 +18,7 @@ export class SearchBoxComponent implements OnInit {
       return null;
     }
 
-    const errors = control.value.split('').reduce((acc, char, index) => {
+    const errors = control.value.toLowerCase().split('').reduce((acc, char, index) => {
       if (!IdnCodesSet.has(char.charCodeAt()) || (char === '-' && index === 0)) {
         acc[char] = true;
       }
