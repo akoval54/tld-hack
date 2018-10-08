@@ -34,5 +34,18 @@ export class SearchBoxComponent implements OnInit {
 
   setCurrentTerm = (term: string) => this.domainService.setCurrentTerm(term);
 
-  getErrorMessage = () => `Bad symbols: ${Object.keys(this.searchBoxControl.errors).join(' ')}`;
+  getErrorMessage = () => {
+    const badSymbols = Object.keys(this.searchBoxControl.errors)
+      .map(char => {
+        switch (char) {
+          case ' ':
+            return '<space>';
+          default:
+            return char;
+        }
+      })
+      .join(' ');
+
+    return `Bad symbols: ${badSymbols}`;
+  }
 }
