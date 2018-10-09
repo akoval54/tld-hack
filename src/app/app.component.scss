@@ -1,17 +1,16 @@
 .b-app {
   flex-direction: column;
   align-items: center;
-  height: 100vh;
 
   .b-app__top {
-    height: 35%;
+    min-height: 35vh;
     align-items: flex-end;
   }
   .b-app__middle {
-    height: 60%;
+    min-height: 60vh;
   }
   .b-app__bottom {
-    height: 5%;
+    min-height: 5vh;
     background-color: #3f51b5;
     align-items: center;
     justify-content: center;
