@@ -1,5 +1,9 @@
 .b-search-input {
-  min-width: 550px;
+  min-width: 500px;
+
+  @media screen and (max-width: 599px) {
+    min-width: 300px;
+  }
 }
 
 .b-search-input > * {
