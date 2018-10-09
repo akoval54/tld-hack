@@ -1,4 +1,4 @@
-$logo-size: 96px;
+@import "~src/mixins";
 
 .b-header {
   flex-direction: column;
@@ -8,9 +8,7 @@ $logo-size: 96px;
 
   .b-header__logo {
     .mat-icon {
-      font-size: $logo-size;
-      height: $logo-size;
-      width: $logo-size;
+      @include mat-icon-size(96px);
     }
   }
 
