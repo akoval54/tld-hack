@@ -1,5 +1,4 @@
 $logo-size: 96px;
-$slogan-width: 450px;
 
 .b-header {
   flex-direction: column;
@@ -17,7 +16,16 @@ $slogan-width: 450px;
 
   .b-header__slogan {
     .b-header-slogan {
-      width: $slogan-width;
+      width: 450px;
+
+      @media screen and (max-width: 599px) {
+        width: 320px;
+
+        h1 {
+          font-size: 1.5em;
+        }
+      }
+
       justify-content: space-evenly;
     }
   }
