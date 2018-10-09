@@ -3,7 +3,11 @@
 $domain-hack-font-size: 16px;
 
 .b-domain-hacks {
-  min-width: 900px;
+  min-width: 600px;
+
+  @media screen and (max-width: 599px) {
+    min-width: 320px;
+  }
 
   .mat-header-cell {
     font-size: $domain-hack-font-size;
