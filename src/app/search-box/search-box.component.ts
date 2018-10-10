@@ -36,6 +36,11 @@ export class SearchBoxComponent implements OnInit {
     this.searchBoxControl.markAsTouched();
 
     this.searchBoxControl.valueChanges.subscribe(value => {
+      if (value.includes(' ')) {
+        this.searchBoxControl.setValue(value.replace(/\s+/g, '-'));
+        return;
+      }
+
       if (this.searchBoxControl.invalid) {
         this.domainService.setCurrentTerm(undefined);
       } else {
