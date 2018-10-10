@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatTooltip, MatIcon, MatTableModule} from '@angular/material';
 
-import { DomainsComponent } from './domains.component';
+import {DomainsComponent} from './domains.component';
 
 describe('DomainsComponent', () => {
   let component: DomainsComponent;
@@ -8,9 +9,9 @@ describe('DomainsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DomainsComponent ]
-    })
-    .compileComponents();
+      declarations: [DomainsComponent, MatTooltip, MatIcon],
+      imports: [MatTableModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

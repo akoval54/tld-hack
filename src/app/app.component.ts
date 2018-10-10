@@ -6,7 +6,6 @@ import {Component, ElementRef} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'domains';
   build;
 
   constructor(private elementRef: ElementRef) {
