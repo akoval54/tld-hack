@@ -8,6 +8,7 @@
       placeholder="e.g., internet"
       autocomplete="off"
       autocapitalize="off"
+      (keyup.enter)="handleEnter($event)"
     />
     <button mat-button *ngIf="searchBoxControl.value" matSuffix mat-icon-button (click)="searchBoxControl.setValue('')">
       <mat-icon>close</mat-icon>

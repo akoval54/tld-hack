@@ -60,4 +60,8 @@ export class SearchBoxComponent implements OnInit {
 
     return `Bad symbols: ${badSymbols}`;
   }
+
+  handleEnter = (event) => {
+    event.target.blur();
+  }
 }
