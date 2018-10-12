@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {List, Range} from 'immutable';
 
 import {TLD_MAX_LENGTH, TLD_MIN_LENGTH} from './tld-length';
@@ -11,18 +11,16 @@ import TopLevelDomain from './tld';
   providedIn: 'root'
 })
 export class DomainService {
-  private domainHacks = new Subject<List<DomainHack>>();
+  public domainHacks$ = new BehaviorSubject<List<DomainHack>>(List());
 
-  domainHacks$ = this.domainHacks.asObservable();
-
-  setCurrentTerm = (term: string) => {
-    this.domainHacks.next(this.getDomainHacks((term || '').toLowerCase()));
+  public setCurrentTerm = (term: string) => {
+    this.domainHacks$.next(this.getDomainHacks((term || '').toLowerCase()));
   }
 
   private getDomainHacks = (term: string) => {
     let results: List<DomainHack> = List();
 
-    if (term.length <= TLD_MIN_LENGTH) {
+    if (term.startsWith('-') || term.length <= TLD_MIN_LENGTH) {
       return results;
     }
 
